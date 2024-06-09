@@ -10,3 +10,12 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+.buttonDelete {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.taskItem:hover .buttonDelete {
+    opacity: 1;
+    visibility: visible;
+}
