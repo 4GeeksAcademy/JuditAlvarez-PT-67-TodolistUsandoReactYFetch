@@ -1,43 +1,38 @@
-import React, { useState, useEffect } from "react";
 
+import React, { useState, useEffect } from "react";
 const Home = () => {
   const [input, setInput] = useState("");
   const [taskList, setTaskList] = useState([]);
   const [todos, setTodos] = useState([]);
 const [add, setAdd] = useState("");
-  
     const getData = async () => {
       const response = await fetch('https://playground.4geeks.com/todo/users/judit_alvarez');
       if(response.ok){
         const data = await response.json();
-      setTodos(data.todos);  
+      setTodos(data.todos);
     }
    };
    useEffect(() => {
     getData();
   }, []);
-
   const text = (event) => {
     setInput(event.target.value);
   };
-
   const addTask = () => {
-	if (input) {
-	  setTaskList([...taskList, input]);
-	  setInput("");
-	}
+  if (input) {
+    setTaskList([...taskList, input]);
+    setInput("");
+  }
   };
-
   const handleDelete = (index) => {
-	const newArr = [];
-	for (let i = 0; i < taskList.length; i++) {
-		if (i !== index) {
-			newArr.push(taskList[i]);
-		}
-	}
-	setTaskList(newArr);
+  const newArr = [];
+  for (let i = 0; i < taskList.length; i++) {
+    if (i !== index) {
+      newArr.push(taskList[i]);
+    }
+  }
+  setTaskList(newArr);
 };
-    
   return (
     <div className="container w-75 justify-content-center text-center border border-info bg-primary">
       <h1 className="text-center">Todos</h1>
@@ -60,5 +55,4 @@ const [add, setAdd] = useState("");
     </div>
   );
 };
-
 export default Home;
